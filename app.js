@@ -7,7 +7,7 @@ const form = document.getElementById("convert");
 
 document.addEventListener('keydown', function (e) {
     let key = e.code;
-    
+
     if (key == 'KeyK') {
         convertType = "kilometers"
         heading.innerHTML = "Kilometers to Miles Converter"
@@ -27,20 +27,21 @@ document.addEventListener('keydown', function (e) {
 })
 
 form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const distance = parseFloat(document.getElementById('distance').value);
-    
-    
+            e.preventDefault();
+            const distance = parseFloat(document.getElementById('distance').value);
 
-    if(convertType == "kilometers"){
-        let conversion = (distance  * 0.621371192).toFixed(2)
-        answerDiv.innerHTML = conversion
-        answerDiv.innerHTML = `<h2>${distance} kilometers convert to ${conversion} miles</h2>`
-    }else if(convertType == "miles"){
-        let conversion = (distance  * 1.609344).toFixed(2)
-        answerDiv.innerHTML = conversion
-        answerDiv.innerHTML = `<h2>${distance} kilometers convert to ${conversion} miles</h2>`
-    }else {
-        answerDiv.innerHTML = `<h2 style="color:red">value is not a number</h2>`
-    }
-})
+            if (distance) {
+                if (convertType == "kilometers") {
+                    let conversion = (distance * 0.621371192).toFixed(2)
+                    answerDiv.innerHTML = conversion
+                    answerDiv.innerHTML = `<h2>${distance} kilometers convert to ${conversion} miles</h2>`
+                } else {
+                    let conversion = (distance * 1.609344).toFixed(2)
+                    answerDiv.innerHTML = conversion
+                    answerDiv.innerHTML = `<h2>${distance} kilometers convert to ${conversion} miles</h2>`
+                }
+
+                }else{
+                    answerDiv.innerHTML = `<h2 style="color: red">Invalid value</h2>`
+                }
+            })
